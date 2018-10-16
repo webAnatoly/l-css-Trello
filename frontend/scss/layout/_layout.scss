@@ -1,0 +1,49 @@
+.container {
+  max-width: 120rem;
+  margin: 8rem auto;
+  background-color: var(--color-grey-light-1);
+  box-shadow: var(--shadow-dark);
+
+  min-height: 30rem;
+}
+
+.header {
+  font-size: 1.4rem;
+  height: 7rem;
+  background-color: #fff;
+  border-bottom: 1px solid var(--color-grey-light-2);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+}
+
+.sidebar {
+  background-color:  var(--color-grey-dark-1);
+
+  flex: 0 0 18%; // flex is shorthand for flex-grow, flex-shrink, flex-basis. Defaults values is "flex: 0 1 auto;"
+                
+                 /* flex-grow: 0 - don't allow the element to grow if there's some space
+                    flex-shrink: 0 - don't allow the element to shrink if there's not enough space
+                    flex-basis: 18% - always keep width 18% */
+
+  // вертикальное позиционирование блоков .side-nav и .legal внутри .sidebar
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hotel-view {
+  background-color: #fff;
+
+  // just for test
+  background-color: lightyellow;
+  min-height: 80rem;
+
+  flex: 1; // this equal flex: 1 1 auto;
+           // flex-grow: 1 means to allow the element to grow if there's some free space
+}
