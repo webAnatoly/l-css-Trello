@@ -39,11 +39,8 @@
 
 .hotel-view {
   background-color: #fff;
-
-  // just for test
-  background-color: lightyellow;
   min-height: 80rem;
 
   flex: 1; // this equal flex: 1 1 auto;
-           // flex-grow: 1 means to allow the element to grow if there's some free space
+           // flex-grow: 1 means to allow the element to grow if there's some free space (to fill all free space).
 }

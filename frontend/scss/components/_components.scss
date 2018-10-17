@@ -183,10 +183,120 @@
   }
 }
 
-//  LEGAL TEXT **********************************************************
+// LEGAL TEXT **********************************************************
 .legal {
   font-size: 1.2rem;
   color: var(--color-grey-light-4);
   text-align: center;
   padding: 2.5rem;
+}
+
+// GALLERY  **********************************************************
+.gallery {
+  display: flex;
+
+  &__photo {
+    width: 100%;
+    display: block; // убрать у картинок небольшое пространство снизу, которое появляется там если оставить их inline
+  }
+}
+
+// HOTEL OVERVIEW  **********************************************************
+.overview {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-grey-light-2);
+
+  &__heading {
+    font-size: 2.25rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1.5rem;
+  }
+
+  &__stars {
+    margin-right: auto; // отступит с права на полную катушку и прижмется к левому краю, а остольные блоки прижмутся к правому краю
+    display: flex; // что-бы svg звезды показывались не как inline, а как flex элементы. В этом случае они выравняются вертикально по центру, даже без align-items: center
+  }
+
+  &__icon-star,
+  &__icon-location {
+    width: 1.75rem;
+    height: 1.75rem;
+    fill: var(--color-primary);
+  }
+
+  &__location {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon-location {
+    margin-right: .5rem;
+  }
+
+  &__rating {
+    background-color: var(--color-primary);
+    color: white;
+    margin-left: 3rem;
+    padding: 0 2.25rem;
+    align-self: stretch; // растянуться по высоте родителя
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__rating-average {
+    font-size: 2.25rem;
+    font-weight: 300;
+    margin-bottom: -3px; // чтобы уменьшить расстояние между -average и -count
+  }
+
+  &__rating-count {
+    font-size: .8rem;
+    text-transform: uppercase;
+  }
+}
+
+// BUTTON INLINE **********************************************************
+.btn-inline {
+  border: none;
+  color: var(--color-primary);
+  font-size: inherit;
+  border-bottom: 1px solid currentColor; // the border will have the exact same color as the text, and that's what we want here.
+  padding-bottom: 2px;
+  display: inline-block;
+  background-color: transparent;
+  cursor: pointer;
+  transition: .2s;
+
+  &:hover {
+    color: var(--color-grey-dark-1); // border-bottom при ховере тоже будет менять цвет, потому что border-bottom задано цвет через currenColor
+    animation: pulsate 1s infinite;
+  }
+
+  &:focus { 
+    outline: none;
+  }
+}
+
+@keyframes pulsate { // анимация для кнопки
+  0% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 1rem 4rem rgba(0,0,0,.25);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: none;
+  }
 }
