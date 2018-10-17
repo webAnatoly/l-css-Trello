@@ -11,7 +11,7 @@
   font-size: 1.4rem;
   height: 7rem;
   background-color: #fff;
-  border-bottom: 1px solid var(--color-grey-light-2);
+  border-bottom: var(--line);
 
   display: flex;
   justify-content: space-between;
@@ -43,4 +43,25 @@
 
   flex: 1; // this equal flex: 1 1 auto;
            // flex-grow: 1 means to allow the element to grow if there's some free space (to fill all free space).
+}
+
+.detail {
+  display: flex;
+  padding: 4.5rem;
+  background-color: var(--color-grey-light-1);
+  border-bottom: 1px solid var(--line);
+}
+
+.description {
+  font-size: 1.4rem;
+  background-color: #fff;
+  box-shadow: var(--shadow-light);
+  padding: 3rem;
+  flex: 0 0 60%; // [Длинный коммент в одну строку] it's like "flex-grow: 0, flex-shrink: 0, flex-basis: 60%" Секция не будет увеличиваться/уменьшаться за счет flex-grow/flex-shrink, потому что им заданы значения 0, но она будет меняться за счет flex-basis, потому что его значение задано в процентах 60%.
+  margin-right: 4.5rem;
+}
+
+.user-reviews {
+  background-color: yellowgreen;
+  flex: 1; // занять оставшеюся свободную ширину. "flex: 1" === "flex-grow: 1, flex-shrink: 1, flex-basis: auto"
 }

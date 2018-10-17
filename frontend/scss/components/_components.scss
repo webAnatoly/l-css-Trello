@@ -205,7 +205,7 @@
 .overview {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--color-grey-light-2);
+  border-bottom: var(--line);
 
   &__heading {
     font-size: 2.25rem;
@@ -298,5 +298,85 @@
   100% {
     transform: scale(1);
     box-shadow: none;
+  }
+}
+
+// PARAGRAPH **********************************************************
+.paragraph:not(:last-of-type) { // задать маржин всем, кроме последнего параграфа
+  margin-bottom: 2rem;
+}
+
+
+
+
+// LIST **********************************************************
+.list {
+  list-style: none;
+  margin: 3rem 0;
+  padding: 3rem 0;
+  border-top: var(--line);
+  border-bottom: var(--line);
+
+  display: flex;
+  flex-wrap: wrap;
+
+  // каждый item будет занимть половину ширины родителя
+  &__item {
+    flex: 0 0 50%;
+    margin-bottom: .7rem;
+
+    display: flex; // чтобы выровнять svg иконку &__item::before и текст &__item вертикально в одну линию
+    align-items: center;
+  }
+
+  &__item::before {
+    content:"";
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    margin-right: .7rem;
+
+    // for older browsers
+    // background-image: url(./../img/chevron-thin-right.svg);
+    // background-size: cover;
+
+    // Newer browsers - masks
+    background-color: var(--color-primary);
+    mask-image: url(./../img/chevron-thin-right.svg); // The mask-image CSS property sets the image that is used as mask layer for an element.
+    mask-size: cover;
+  }
+}
+
+
+// RECOMMEND **********************************************************
+.recommend {
+  font-size: 1.4rem;
+  color: var(--color-grey-dark-3);
+
+  display: flex;
+  align-items: center;
+
+  &__count {
+    margin-right: auto; // see more for this trick http://next.plnkr.co/plunk/dTCZuhuTLIre2QJA
+  }
+
+  &__friends {
+    display: flex;
+    align-items: center;
+  }
+
+  &__photo {
+    box-sizing: content-box; // здесь нам как-раз нужно дефолтное поведение, при котором бордер будет прибавлятся к ширине картинке, а не встраиваться в неё
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    border: 3px solid #fff;
+
+    // display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: -1.5rem;
+    }
+
   }
 }
