@@ -129,10 +129,23 @@
   list-style: none;
   margin-top: 3.5rem;
 
+  @media only screen and (max-width: $bp-medium) {
+    display: flex; // чтобы кнопки из левого сайдбара расположились по горизонтали одна за другой
+    margin: 0;
+  }
+
   &__item {
     position: relative;
     &:not(:last-child) {
       margin-bottom: .5rem;
+
+      @media only screen and (max-width: $bp-medium) {
+        margin-bottom: 0; // remove margin
+      }
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+      flex: 1; // чтобы каждый элемент (<li>) с классом .side-nav__item заполнил собой всё доступное пространство
     }
   }
 
@@ -173,6 +186,11 @@
 
     display: flex;
     align-items: center;
+
+    @media only screen and (max-width: $bp-medium) {
+      justify-content: center; // выровнять текст по центру
+      padding: 2rem;
+    }
   }
 
   &__icon {
@@ -189,6 +207,10 @@
   color: var(--color-grey-light-4);
   text-align: center;
   padding: 2.5rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    display: none; // скрыть legal в мобильной версии
+  }
 }
 
 // GALLERY  **********************************************************
@@ -383,8 +405,6 @@
     border-radius: 50%;
     border: 3px solid #fff;
 
-    // display: inline-block;
-
     &:not(:last-child) {
       margin-right: -1.5rem;
     }
@@ -400,6 +420,11 @@
   padding: 3rem;
   position: relative; // чтобы можно было .review::before абсолютно позиционировать
   overflow: hidden; // чтобы декоративные кавычки не выходили за пределы блока
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
 
   &__text {
     margin-bottom: 2rem;
@@ -458,6 +483,10 @@
 .cta {
   padding: 3.5rem 0;
   text-align: center;
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 2.5rem 0;
+  }
 
   &__book-now {
     font-size: 1.5rem;
