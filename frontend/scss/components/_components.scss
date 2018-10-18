@@ -452,5 +452,75 @@
     font-family: sans-serif;
     z-index: 1;
   }
+}
 
+// CALL TO ACTION **********************************************************
+.cta {
+  padding: 3.5rem 0;
+  text-align: center;
+
+  &__book-now {
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+  }
+}
+
+// ANOTHER BUTTON **********************************************************
+.btn {
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  border-radius: 100px;
+  border: none;
+  background-image: linear-gradient(to right,
+    var(--color-primary-light), var(--color-primary-dark));
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  
+  // реализация меняющихся надписей в кнопке
+  & > * {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    transition: all .2s;
+  }
+  
+  &__visible {
+    padding: 2rem 7.5rem; // тут padding задает размер кнопки
+    transition: all .2s;
+  }
+
+  &__invisible {
+    position: absolute;
+    padding: 2rem 0; // если оставить 7.5rem то текст почему-то не будет помещаться в одну строку
+    left: 0;
+    top: -100%;
+  }
+
+  &:hover {
+      background-image: linear-gradient(to left,
+    var(--color-primary-light), var(--color-primary-dark));
+  }
+
+  &:hover {
+    .btn__visible {
+      transform: translateY(100%); // [Длинный коммент в одну строку] Здесь используется transform потому что элемент имеет позицию relative. Т.е. если бы было position: absolute, то можно было top:, left: и т.д. но так как элемент имеет позицию relative, то очень удобно двигать такие элементы с помощью transform.
+    }
+
+    .btn__invisible {
+      top: 0;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-moz-focus-inner {
+    border: none;
+  }
 }
