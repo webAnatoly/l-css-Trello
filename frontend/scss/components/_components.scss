@@ -14,6 +14,14 @@
   align-items: center;
   justify-content: center;
 
+  @media only screen and (max-width: $bp-smallest) {
+    /* форму поиска ставим в конец ряда. Она будет переносится на маленьких
+    экранах вниз, потому что родителю в соответствующем медиа запросе пропишем
+    flex-wrap: wrap , а родитель у нас элемент с классом .header */ 
+    order: 1; // flex-item order
+    flex: 0 0 95%;
+  }
+
   &__input {
     font-family: inherit; // [Длинный комментарий] элемент <input> не наследует свойства шрифтом автоматически, поэтому прописываем inherit, чтобы <input> унаследовал родительские шрифты
     font-size: inherit;   // [Длинный комментарий] элемент <input> не наследует свойства шрифтом автоматически, поэтому прописываем inherit, чтобы <input> унаследовал родительские шрифты (в данном случае размер шрифта будет наследоваться от header, потому что у него прописан font-size)
@@ -191,6 +199,11 @@
       justify-content: center; // выровнять текст по центру
       padding: 2rem;
     }
+
+    @media only screen and (max-width: $bp-small) {
+      flex-direction: column; // чтобы иконки стали над текстом
+      padding: 1.5rem .5rem;
+    }
   }
 
   &__icon {
@@ -198,6 +211,13 @@
     height: 1.75rem;
     margin-right: 2rem;
     fill: currentColor; // current color is just the color of the current element or the parent element. Например если на ховере родителя будет менятся color то и иконка будет менять свой цвет.
+  
+    @media only screen and (max-width: $bp-small) {
+      margin-right: 0; // маржин в ноль, чтобы иконки стали по центру
+      margin-bottom: .7rem;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
   }
 }
 
@@ -235,6 +255,11 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 1.5rem;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1.8rem;
+      padding: 1.25rem 2rem;
+    }
   }
 
   &__stars {
@@ -270,17 +295,29 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media only screen and (max-width: $bp-small) {
+      padding: 0 1.5rem;
+    }
   }
 
   &__rating-average {
     font-size: 2.25rem;
     font-weight: 300;
     margin-bottom: -3px; // чтобы уменьшить расстояние между -average и -count
+  
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1.8rem;
+    }
   }
 
   &__rating-count {
     font-size: .8rem;
     text-transform: uppercase;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: .5rem;
+    }
   }
 }
 

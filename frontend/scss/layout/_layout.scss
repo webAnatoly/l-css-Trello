@@ -22,6 +22,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media only screen and (max-width: $bp-smallest) {
+    flex-wrap: wrap; // что-бы строка поиска переносилась в низ на маленьких экранах
+    height: 11rem;
+    align-content: space-around; // распределить ряды по оси cross axis
+  }
 }
 
 .content {
@@ -66,6 +72,10 @@
   @media only screen and (max-width: $bp-medium) {
     padding: 3rem;
   }
+
+  @media only screen and (max-width: $bp-small) {
+    flex-direction: column;
+  }
 }
 
 .description {
@@ -78,6 +88,11 @@
   @media only screen and (max-width: $bp-medium) {
     padding: 3rem;
     margin-right: 3rem; // чтобы было одинаково с padding для .detail 3rem
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    margin-right: 0;
+    margin-bottom: 3rem;
   }
 }
 
