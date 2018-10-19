@@ -32,8 +32,19 @@
   --line: 1px solid var(--color-grey-light-2);
 }
 
+//sass variables for @media (because native CSS vars doesn't allowed in media queries)
+$bp-largest: 75em;        // 1200px / 16px = 75em
+$bp-large: 68.75em;       // 1100px / 16px = 68.75em 
+$bp-medium: 56.25em;      // 900px  / 16px = 56.25em
+$bp-small: 37.5em;        // 600px  / 16px = 37.5em
+$bp-smallest: 31.25em;  // 500px / 16px = 31.25em
+
 html {
   font-size: 62.5%; // This defines what 1rem is based on default browser font falue equal 16px.  So, now 1rem = 10px because 10px/16px = 62.5%.
+
+  @media only screen and (max-width: $bp-large) {
+    font-size: 50%; // I want 1rem to be equal 8px so 8/16 = 50%
+  }
 }
 
 body {

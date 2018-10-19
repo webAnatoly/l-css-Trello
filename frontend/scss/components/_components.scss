@@ -14,6 +14,14 @@
   align-items: center;
   justify-content: center;
 
+  @media only screen and (max-width: $bp-smallest) {
+    /* форму поиска ставим в конец ряда. Она будет переносится на маленьких
+    экранах вниз, потому что родителю в соответствующем медиа запросе пропишем
+    flex-wrap: wrap , а родитель у нас элемент с классом .header */ 
+    order: 1; // flex-item order
+    flex: 0 0 95%;
+  }
+
   &__input {
     font-family: inherit; // [Длинный комментарий] элемент <input> не наследует свойства шрифтом автоматически, поэтому прописываем inherit, чтобы <input> унаследовал родительские шрифты
     font-size: inherit;   // [Длинный комментарий] элемент <input> не наследует свойства шрифтом автоматически, поэтому прописываем inherit, чтобы <input> унаследовал родительские шрифты (в данном случае размер шрифта будет наследоваться от header, потому что у него прописан font-size)
@@ -129,10 +137,23 @@
   list-style: none;
   margin-top: 3.5rem;
 
+  @media only screen and (max-width: $bp-medium) {
+    display: flex; // чтобы кнопки из левого сайдбара расположились по горизонтали одна за другой
+    margin: 0;
+  }
+
   &__item {
     position: relative;
     &:not(:last-child) {
       margin-bottom: .5rem;
+
+      @media only screen and (max-width: $bp-medium) {
+        margin-bottom: 0; // remove margin
+      }
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+      flex: 1; // чтобы каждый элемент (<li>) с классом .side-nav__item заполнил собой всё доступное пространство
     }
   }
 
@@ -173,6 +194,16 @@
 
     display: flex;
     align-items: center;
+
+    @media only screen and (max-width: $bp-medium) {
+      justify-content: center; // выровнять текст по центру
+      padding: 2rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      flex-direction: column; // чтобы иконки стали над текстом
+      padding: 1.5rem .5rem;
+    }
   }
 
   &__icon {
@@ -180,6 +211,13 @@
     height: 1.75rem;
     margin-right: 2rem;
     fill: currentColor; // current color is just the color of the current element or the parent element. Например если на ховере родителя будет менятся color то и иконка будет менять свой цвет.
+  
+    @media only screen and (max-width: $bp-small) {
+      margin-right: 0; // маржин в ноль, чтобы иконки стали по центру
+      margin-bottom: .7rem;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
   }
 }
 
@@ -189,6 +227,10 @@
   color: var(--color-grey-light-4);
   text-align: center;
   padding: 2.5rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    display: none; // скрыть legal в мобильной версии
+  }
 }
 
 // GALLERY  **********************************************************
@@ -213,6 +255,11 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 1.5rem;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1.8rem;
+      padding: 1.25rem 2rem;
+    }
   }
 
   &__stars {
@@ -248,17 +295,29 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media only screen and (max-width: $bp-small) {
+      padding: 0 1.5rem;
+    }
   }
 
   &__rating-average {
     font-size: 2.25rem;
     font-weight: 300;
     margin-bottom: -3px; // чтобы уменьшить расстояние между -average и -count
+  
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1.8rem;
+    }
   }
 
   &__rating-count {
     font-size: .8rem;
     text-transform: uppercase;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: .5rem;
+    }
   }
 }
 
@@ -386,8 +445,6 @@
     border-radius: 50%;
     border: 3px solid #fff;
 
-    // display: inline-block;
-
     &:not(:last-child) {
       margin-right: -1.5rem;
     }
@@ -403,6 +460,11 @@
   padding: 3rem;
   position: relative; // чтобы можно было .review::before абсолютно позиционировать
   overflow: hidden; // чтобы декоративные кавычки не выходили за пределы блока
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
 
   &__text {
     margin-bottom: 2rem;
@@ -461,6 +523,10 @@
 .cta {
   padding: 3.5rem 0;
   text-align: center;
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 2.5rem 0;
+  }
 
   &__book-now {
     font-size: 1.5rem;

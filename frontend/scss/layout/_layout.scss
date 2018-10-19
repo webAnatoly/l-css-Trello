@@ -5,6 +5,12 @@
   box-shadow: var(--shadow-dark);
 
   min-height: 30rem;
+
+  @media only screen and (max-width: $bp-largest) {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+  }
 }
 
 .header {
@@ -16,10 +22,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media only screen and (max-width: $bp-smallest) {
+    flex-wrap: wrap; // что-бы строка поиска переносилась в низ на маленьких экранах
+    height: 11rem;
+    align-content: space-around; // распределить ряды по оси cross axis
+  }
 }
 
 .content {
   display: flex;
+
+  // левый сайдбар превращаем в горизонтальный
+  @media only screen and (max-width: $bp-medium) {
+    flex-direction: column;
+  }
 }
 
 .sidebar {
@@ -51,6 +68,14 @@
   padding: 4.5rem;
   background-color: var(--color-grey-light-1);
   border-bottom: 1px solid var(--line);
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 3rem;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    flex-direction: column;
+  }
 }
 
 .description {
@@ -58,7 +83,17 @@
   box-shadow: var(--shadow-light);
   padding: 3rem;
   flex: 0 0 60%; // [Длинный коммент в одну строку] it's like "flex-grow: 0, flex-shrink: 0, flex-basis: 60%" Секция не будет увеличиваться/уменьшаться за счет flex-grow/flex-shrink, потому что им заданы значения 0, но она будет меняться за счет flex-basis, потому что его значение задано в процентах 60%.
-  margin-right: 4.5rem;
+  margin-right: 4.5rem; // чтобы было одинаково с padding для .detail 4.5rem
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 3rem;
+    margin-right: 3rem; // чтобы было одинаково с padding для .detail 3rem
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    margin-right: 0;
+    margin-bottom: 3rem;
+  }
 }
 
 .user-reviews {
