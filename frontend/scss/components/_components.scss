@@ -347,14 +347,17 @@
     width: 1rem;
     margin-right: .7rem;
 
-    // for older browsers
-    // background-image: url(./../img/chevron-thin-right.svg);
-    // background-size: cover;
+    // для браузеров не поддерживающих mask-image
+    background-image: url(./../img/chevron-thin-right.svg);
+    background-size: cover;
 
-    // Newer browsers - masks
-    background-color: var(--color-primary);
-    mask-image: url(./../img/chevron-thin-right.svg); // The mask-image CSS property sets the image that is used as mask layer for an element.
-    mask-size: cover;
+    // для браузеров поддерживающих mask-image 
+    @supports (mask-image: url()) {
+      background-image: none;
+      background-color: var(--color-primary);
+      mask-image: url(./../img/chevron-thin-right.svg); // The mask-image CSS property sets the image that is used as mask layer for an element.
+      mask-size: cover;
+    }
   }
 }
 
